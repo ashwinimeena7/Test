@@ -1,7 +1,7 @@
 using { ashwini.db.master, ashwini.db.transaction } from '../db/datamodel';
 
 
-service CatalogsService@(path:'/CatalogService') {
+service CatalogService@(path:'/CatalogService') {
 
     @Capabilities : { Insertable, Updatable: false, Deletable }
     entity EmployeeSet as projection on master.employees;
@@ -14,7 +14,11 @@ service CatalogsService@(path:'/CatalogService') {
         title: '{i18n>poHeader}'
     ) as projection on transaction.purchaseorder{
         *,
+        round(GROSS_AMOUNT,2) as GROSS_AMOUNT: Decimal(15,2) ,
         Items: redirected to POItems
+    }actions{
+        function largestOrder() returns array of POs;
+        action boost();
     }
 
     entity POItems @( title : '{i18n>poItems}' )

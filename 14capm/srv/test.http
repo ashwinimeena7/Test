@@ -59,3 +59,56 @@ Content-Type: application/json
 
 ###Read Single PO - Old syntax works as its not UUID type
 GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')
+
+
+###============================================Custom Handler========================================
+###Read Employee with custom handler
+GET http://localhost:4004/my-service-demo/ReadEmployeeSrv/f0c3422a-0f97-411a-b343-33b2daf2c17c
+
+###Create new Employee with custom handler
+POST http://localhost:4004/my-service-demo/InsertEmployeeSrv
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+    "nameFirst": "Anu",
+    "nameMiddle": null,
+    "nameLast": "Meena",
+    "nameInitials": null,
+    "sex": "F",
+    "language": "E",
+    "phoneNumber": null,
+    "email": "anu.meena@gmail.com",
+    "loginName": "ANUM",
+    "accountNumber": "9876543",
+    "bankName": "HDFC Bank"
+}
+
+###update Employee with custom handler
+PATCH http://localhost:4004/my-service-demo/UpdateEmployeeSrv/f0c3422a-0f97-411a-b343-33b2daf2c17c
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+    "ID": "f0c3422a-0f97-411a-b343-33b2daf2c17c",
+    "nameFirst": "Ashwini G",
+    "nameMiddle": "Gopallal",
+    "nameLast": "Manetwal"
+}
+
+###Delete Employee with custom handler
+DELETE http://localhost:4004/my-service-demo/DeleteEmployeeSrv/f0c3422a-0f97-411a-b343-33b2daf2c17c
+
+
+###=================================Actions and Functions=====================================
+GET http://localhost:4004/CatalogService/POs?$top=5
+
+###Calling custom actions boost for the entity
+POST http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')/CatalogService.boost
+Content-Type: application/json
+
+{}
+
+###function largest order for the entity. read largest order in system
+GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')/CatalogService.largestOrder()
+
+###Read single PO
+GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')

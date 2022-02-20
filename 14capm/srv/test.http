@@ -1,0 +1,61 @@
+GET  http://localhost:4004/CatalogService/
+
+###Read service metadata
+GET http://localhost:4004/CatalogService/$metadata
+
+###Read Top 2 Employee
+GET http://localhost:4004/CatalogService/EmployeeSet?$top=2
+
+###Read Purchase order
+GET http://localhost:4004/CatalogService/POs?$top=2&$expand=Items,PARTNER_GUID
+
+###Create new Employee
+POST http://localhost:4004/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+    "nameFirst": "Ashwini",
+    "nameMiddle": "Gopal",
+    "nameLast": "Meena",
+    "nameInitials": null,
+    "sex": "F",
+    "language": "E",
+    "phoneNumber": null,
+    "email": "ashwini.meena@gmail.com",
+    "loginName": "ASHWINIM",
+    "accountNumber": "9876543",
+    "bankName": "HDFC Bank"
+}
+
+###Read Single Employee which you just created
+GET http://localhost:4004/CatalogService/EmployeeSet/f0c3422a-0f97-411a-b343-33b2daf2c17c
+
+###Update the salary of Employee
+PUT http://localhost:4004/CatalogService/EmployeeSet/f0c3422a-0f97-411a-b343-33b2daf2c17c
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+    "salaryAmount": "5360.97",
+    "Currency_code": "INR"
+}
+
+###
+PATCH http://localhost:4004/CatalogService/EmployeeSet/f0c3422a-0f97-411a-b343-33b2daf2c17c
+Content-Type: application/json
+
+{
+    "nameFirst": "Ashwini",
+    "nameMiddle": "Gopal",
+    "nameLast": "Meena",
+    "nameInitials": null,
+    "sex": "F",
+    "language": "E",
+    "phoneNumber": null,
+    "email": "ashwini.meena@gmail.com",
+    "loginName": "ASHWINIM",
+    "accountNumber": "9876543",
+    "bankName": "HDFC Bank"
+}
+
+###Read Single PO - Old syntax works as its not UUID type
+GET http://localhost:4004/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC28052')

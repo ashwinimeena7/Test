@@ -1,0 +1,9 @@
+{
+    "sqltools.connections": [
+        {
+            "dialect": "SQLite",
+            "name": "ashwiniSQLite",
+            "database": "/home/user/projects/14capm/ashwini.db"
+        }
+    ]
+}

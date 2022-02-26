@@ -17,7 +17,8 @@ type AmountT : Decimal(15,2)@(
 
 
 entity Amount {
-    CURRENCY_CODE: String(4);	
+    //CURRENCY_CODE: String(4);	
+    Currency: Currency;	
     GROSS_AMOUNT:AmountT;	
     NET_AMOUNT:AmountT;
     TAX_AMOUNT:AmountT;     

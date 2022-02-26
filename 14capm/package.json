@@ -7,9 +7,15 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^5",
-    "express": "^4"
+    "@sap/cds-odata-v2-adapter-proxy": "^1.8.9",
+    "add": "^2.0.6",
+    "big.js": "^6.1.1",
+    "express": "^4",
+    "git": "^0.1.5",
+    "hdb": "^0.18.3"
   },
   "devDependencies": {
+    "@sap/ux-specification": "^1.96.4",
     "sqlite3": "^5.0.2"
   },
   "scripts": {
@@ -41,13 +47,19 @@
     }
   },
   "cds": {
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
     "requires": {
       "db": {
-        "kind": "sqlite",
+        "kind": "sql",
         "credentials": {
           "database": "ashwini.db"
         }
       }
     }
-  }
+  },
+  "sapux": [
+    "app/purchaseorderapp"
+  ]
 }
